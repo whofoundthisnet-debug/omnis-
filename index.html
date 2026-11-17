@@ -13,7 +13,7 @@
             <p class="subtitle">THE COLOSSUS PROJECT</p>
 
             <div class="boot-status">
-                <span id="boot-task">Preparing initialization...</span>
+                <span id="boot-task">Waiting for JavaScript...</span>
                 <span id="boot-percent">0%</span>
             </div>
 
@@ -32,6 +32,23 @@
         </header>
         <main id="viewport"></main>
     </div>
+
+    <div id="diagnostics">
+        <strong>OMNIS DIAGNOSTICS</strong>
+        <div id="diagnostic-status">Waiting for system...</div>
+    </div>
+
+    <script>
+        window.addEventListener("error", function(event) {
+            const panel = document.getElementById("diagnostic-status");
+            panel.textContent = "ERROR: " + event.message;
+        });
+
+        window.addEventListener("unhandledrejection", function(event) {
+            const panel = document.getElementById("diagnostic-status");
+            panel.textContent = "PROMISE ERROR: " + event.reason;
+        });
+    </script>
 
     <script type="module" src="src/main.js"></script>
 </body>
