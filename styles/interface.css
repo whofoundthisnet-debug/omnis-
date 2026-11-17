@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #080b10;
+    color: #dce6f2;
+    font-family: Arial, sans-serif;
+}
+
+#app {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 65px;
+    background: #111923;
+    border-bottom: 1px solid #293746;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+}
+
+header h1 {
+    letter-spacing: 5px;
+    font-size: 22px;
+}
+
+header span {
+    color: #71869b;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+#viewport {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #71869b;
+}
