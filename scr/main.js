@@ -1,3 +1,5 @@
+import { createRenderer } from "./renderer.js";
+
 console.log("OMNIS systems online.");
 
 const OMNIS = {
@@ -10,10 +12,14 @@ const OMNIS = {
         height: 100,
         width: 30,
         depth: 20,
-
         components: [],
         systems: []
     }
 };
 
+const viewport = document.getElementById("viewport");
+
+const world = createRenderer(viewport);
+
+console.log("3D viewport online.");
 console.log(OMNIS);
