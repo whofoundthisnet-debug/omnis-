@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,48 +8,114 @@
     <link rel="stylesheet" href="styles/interface.css">
 </head>
 <body>
-    <div id="boot-screen">
-        <div class="boot-content">
-            <h1>OMNIS</h1>
-            <p class="subtitle">THE COLOSSUS PROJECT</p>
-
-            <div class="boot-status">
-                <span id="boot-task">Waiting for JavaScript...</span>
-                <span id="boot-percent">0%</span>
+    <div id="app">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-icon">O</span>
+                <div>
+                    <h1>OMNIS</h1>
+                    <small>THE COLOSSUS PROJECT</small>
+                </div>
             </div>
 
-            <div class="progress-track">
-                <div id="progress-bar"></div>
+            <div class="project-name">
+                <span class="status-dot"></span>
+                PROTOTYPE 001
             </div>
 
-            <div id="boot-log"></div>
-        </div>
-    </div>
-
-    <div id="app" hidden>
-        <header>
-            <h1>OMNIS</h1>
-            <span>PROTOTYPE 001</span>
+            <div class="top-actions">
+                <button id="save-btn">SAVE</button>
+                <button id="load-btn">LOAD</button>
+                <button id="clear-btn" class="danger">CLEAR</button>
+            </div>
         </header>
-        <main id="viewport"></main>
+
+        <main class="workspace">
+            <aside class="sidebar">
+                <h2>CONSTRUCTION</h2>
+                <p class="section-label">BUILDING MATERIALS</p>
+
+                <div id="tool-list">
+                    <button class="tool active" data-tool="structure">
+                        <span class="swatch structure"></span>
+                        Structure
+                    </button>
+                    <button class="tool" data-tool="floor">
+                        <span class="swatch floor"></span>
+                        Flooring
+                    </button>
+                    <button class="tool" data-tool="wall">
+                        <span class="swatch wall"></span>
+                        Wall
+                    </button>
+                    <button class="tool" data-tool="generator">
+                        <span class="swatch generator"></span>
+                        Generator
+                    </button>
+                    <button class="tool" data-tool="pipe">
+                        <span class="swatch pipe"></span>
+                        Pipe
+                    </button>
+                    <button class="tool" data-tool="vent">
+                        <span class="swatch vent"></span>
+                        Ventilation
+                    </button>
+                    <button class="tool" data-tool="habitat">
+                        <span class="swatch habitat"></span>
+                        Habitat
+                    </button>
+                </div>
+
+                <div class="sidebar-divider"></div>
+
+                <p class="section-label">TOOLS</p>
+                <button id="erase-btn" class="utility-tool">⌫ Eraser</button>
+                <button id="inspect-btn" class="utility-tool">⌖ Inspect</button>
+
+                <div class="sidebar-divider"></div>
+
+                <p class="section-label">CONTROLS</p>
+                <div class="help-text">
+                    <p>Left click: Place</p>
+                    <p>Right click: Remove</p>
+                    <p>Middle drag: Move camera</p>
+                    <p>Scroll: Zoom</p>
+                    <p>Space + drag: Move camera</p>
+                </div>
+            </aside>
+
+            <section class="viewport-area">
+                <div class="viewport-heading">
+                    <span>CONSTRUCTION VIEWPORT</span>
+                    <span id="coordinates">X: 0 | Y: 0</span>
+                </div>
+
+                <canvas id="world"></canvas>
+
+                <div class="viewport-footer">
+                    <span id="world-status">WORLD READY</span>
+                    <span id="zoom-level">100%</span>
+                </div>
+            </section>
+
+            <aside class="properties">
+                <h2>PROPERTIES</h2>
+                <div id="property-content">
+                    <div class="empty-selection">
+                        <span>◇</span>
+                        <p>Nothing selected</p>
+                        <small>Select a constructed component to inspect it.</small>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="statusbar">
+            <span id="system-status">SYSTEM ONLINE</span>
+            <span id="component-count">COMPONENTS: 0</span>
+            <span>OMNIS ENGINE 0.001</span>
+        </footer>
     </div>
-
-    <div id="diagnostics">
-        <strong>OMNIS DIAGNOSTICS</strong>
-        <div id="diagnostic-status">Waiting for system...</div>
-    </div>
-
-    <script>
-        window.addEventListener("error", function(event) {
-            const panel = document.getElementById("diagnostic-status");
-            panel.textContent = "ERROR: " + event.message;
-        });
-
-        window.addEventListener("unhandledrejection", function(event) {
-            const panel = document.getElementById("diagnostic-status");
-            panel.textContent = "PROMISE ERROR: " + event.reason;
-        });
-    </script>
 
     <script type="module" src="src/main.js"></script>
 </body>
